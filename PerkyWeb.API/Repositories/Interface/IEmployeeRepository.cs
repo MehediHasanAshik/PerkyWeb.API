@@ -14,5 +14,7 @@ namespace PerkyWeb.API.Repositories.Interface
         Task<Employee?> UpdateAsync(Employee employee);
 
         Task<Employee?> DeleteAsync(int id);
+
+        Task<List<Employee>> SearchAsync(string searchTerm);
     }
 }

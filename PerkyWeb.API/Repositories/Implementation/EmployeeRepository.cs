@@ -77,6 +77,13 @@ namespace PerkyWeb.API.Repositories.Implementation
             return employeeDTO;
         }
 
+        public async Task<List<Employee>> SearchAsync(string searchTerm)
+        {
+            return await dbContext.Employees
+                .Where(e => e.FirstName.Contains(searchTerm) || e.LastName.Contains(searchTerm))
+                .ToListAsync();
+        }
+
         public async Task<Employee?> UpdateAsync(Employee employee)
         {
             var exEmployee = await dbContext.Employees.FindAsync(employee.EmployeeId);

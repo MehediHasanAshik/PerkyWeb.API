@@ -156,5 +156,14 @@ namespace PerkyWeb.API.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet]
+        [Route("search")]
+        public async Task<IActionResult> SearchEmployeeName([FromQuery]string name)
+        {
+            var employeeName = await empRepository.SearchAsync(name);
+
+            return Ok(employeeName);
+        }
     }
 }
